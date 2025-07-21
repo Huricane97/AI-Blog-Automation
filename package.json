@@ -1,0 +1,47 @@
+{
+    "name": "ai-blog-automation",
+    "version": "1.0.0",
+    "description": "Automated blog posting system using OpenAI and WordPress",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "dev": "nodemon index.js",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "setup": "node scripts/setup-wordpress.js",
+        "tags": "node scripts/get-tag-ids.js",
+        "test-permissions": "node scripts/test-permissions.js",
+        "test-auth": "node scripts/test-auth.js",
+        "debug": "node scripts/debug-auth.js",
+        "users": "node scripts/list-users.js",
+        "diagnose": "node scripts/diagnose-user.js",
+        "test-gemini": "node scripts/test-gemini.js",
+        "models": "node scripts/list-models.js",
+        "test-prompts": "node scripts/test-prompts.js",
+        "test-topics": "node scripts/test-topics.js",
+        "analytics": "node scripts/content-analytics.js",
+        "setup-content": "node scripts/setup-wordpress-content.js",
+        "test-auto": "node scripts/test-auto-selection.js",
+        "test-webhook": "node scripts/test-webhook.js"
+    },
+    "keywords": [
+        "ai",
+        "blog",
+        "automation",
+        "wordpress",
+        "openai"
+    ],
+    "author": "Your Name",
+    "license": "MIT",
+    "dependencies": {
+        "axios": "^1.6.0",
+        "dotenv": "^16.3.1",
+        "express": "^4.18.2",
+        "@google/generative-ai": "^0.2.1"
+    },
+    "devDependencies": {
+        "nodemon": "^3.0.1"
+    },
+    "engines": {
+        "node": ">=16.0.0"
+    }
+}

@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: ai-blog-automation
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: WP_URL
+        sync: false
+      - key: WP_USER
+        sync: false
+      - key: WP_APP_PASS
+        sync: false
+      - key: WP_CATEGORY_ID
+        sync: false
+      - key: WP_TAGS
+        sync: false
+      - key: SCHEDULE_TIME
+        value: "0 9 * * *"
+      - key: TIMEZONE
+        value: "UTC"
