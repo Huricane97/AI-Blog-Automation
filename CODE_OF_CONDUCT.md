@@ -1,6 +1,6 @@
-# 📜 Code of Conduct
+# 🤝 Code of Conduct
 
-## 🤝 Our Pledge
+## Our Pledge
 
 We as members, contributors, and leaders pledge to make participation in our
 community a harassment-free experience for everyone, regardless of age, body
@@ -12,7 +12,7 @@ and orientation.
 We pledge to act and interact in ways that contribute to an open, welcoming,
 diverse, inclusive, and healthy community.
 
-## 🎯 Our Standards
+## Our Standards
 
 Examples of behavior that contributes to a positive environment for our
 community include:
@@ -36,7 +36,7 @@ Examples of unacceptable behavior include:
 - Other conduct which could reasonably be considered inappropriate in a
   professional setting
 
-## 🛡️ Enforcement Responsibilities
+## Enforcement Responsibilities
 
 Community leaders are responsible for clarifying and enforcing our standards of
 acceptable behavior and will take appropriate and fair corrective action in
@@ -48,22 +48,25 @@ comments, commits, code, wiki edits, issues, and other contributions that are
 not aligned to this Code of Conduct, and will communicate reasons for moderation
 decisions when appropriate.
 
-## 📏 Scope
+## Scope
 
 This Code of Conduct applies within all community spaces, and also applies when
 an individual is officially representing the community in public spaces.
+Examples of representing our community include using an official e-mail address,
+posting via an official social media account, or acting as an appointed
+representative at an online or offline event.
 
-## ⚖️ Enforcement
+## Enforcement
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
 reported to the community leaders responsible for enforcement at
-[your-email@example.com](mailto:your-email@example.com).
+[conduct@yourdomain.com](mailto:conduct@yourdomain.com).
 All complaints will be reviewed and investigated promptly and fairly.
 
 All community leaders are obligated to respect the privacy and security of the
 reporter of any incident.
 
-## 📋 Enforcement Guidelines
+## Enforcement Guidelines
 
 Community leaders will follow these Community Impact Guidelines in determining
 the consequences for any action they deem in violation of this Code of Conduct:
@@ -109,27 +112,52 @@ individual, or aggression toward or disparagement of classes of individuals.
 **Consequence**: A permanent ban from any sort of public interaction within
 the community.
 
-## 📞 Reporting Guidelines
+## Reporting Guidelines
 
 If you believe someone is violating the Code of Conduct, we ask that you report
-it by emailing [your-email@example.com](mailto:your-email@example.com).
+it by emailing [conduct@yourdomain.com](mailto:conduct@yourdomain.com). All
+reports will be kept confidential. In some cases we may determine that a public
+statement will need to be made. If that's the case, the identities of all
+victims and reporters will remain confidential unless those individuals instruct
+us otherwise.
 
-**If you believe anyone is in physical danger, call your local emergency
-services number immediately.**
+If you believe anyone is in physical danger, please notify appropriate law
+enforcement first. If you are unsure what law enforcement agency is
+appropriate, please include this in your report and we will attempt to notify
+them.
 
-Your report will be handled in accordance with the enforcement guidelines
-above. We will investigate and respond to all complaints.
+If the violation occurs at an event, please also notify the event organizers.
 
-## 📚 Attribution
+## Addressing Grievances
 
-This Code of Conduct is adapted from the [Contributor Covenant][homepage],
+If you feel you have been falsely or unfairly accused of violating this Code of
+Conduct, you should notify the community leaders with a concise description of
+your grievance. Your grievance will be handled in accordance with our existing
+governing policies.
+
+## Contact Information
+
+- **Email**: [conduct@yourdomain.com](mailto:conduct@yourdomain.com)
+- **GitHub**: [@yourusername](https://github.com/yourusername)
+- **Discord**: [Join our community](https://discord.gg/your-invite-link)
+
+## Acknowledgment
+
+This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org),
 version 2.0, available at
 https://www.contributor-covenant.org/version/2/0/code_of_conduct.html.
 
 Community Impact Guidelines were inspired by [Mozilla's code of conduct
 enforcement ladder](https://github.com/mozilla/diversity).
 
-[homepage]: https://www.contributor-covenant.org
+For answers to common questions about this code of conduct, see the FAQ at
+https://www.contributor-covenant.org/faq. Translations are available at
+https://www.contributor-covenant.org/translations.
 
-For answers to common questions about this code of conduct, see
-https://www.contributor-covenant.org/faq
+## License
+
+This Code of Conduct is licensed under the [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by/4.0/).
+
+---
+
+**Thank you for helping make AI Blog Automation a welcoming and inclusive community!** 🌟
