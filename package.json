@@ -1,7 +1,7 @@
 {
     "name": "ai-blog-automation",
     "version": "1.0.0",
-    "description": "Automated blog posting system using OpenAI and WordPress",
+    "description": "🤖 Automate your blog content creation with AI! Generate SEO-optimized blog posts using Google's Gemini AI and publish to WordPress automatically.",
     "main": "index.js",
     "scripts": {
         "start": "node index.js",
@@ -13,7 +13,7 @@
         "test-auth": "node scripts/test-auth.js",
         "debug": "node scripts/debug-auth.js",
         "users": "node scripts/list-users.js",
-        "diagnose": "node scripts/diagnose-user.js",
+        "diagnose": "node scripts/test-auth.js && node scripts/test-permissions.js",
         "test-gemini": "node scripts/test-gemini.js",
         "models": "node scripts/list-models.js",
         "test-prompts": "node scripts/test-prompts.js",
@@ -21,17 +21,56 @@
         "analytics": "node scripts/content-analytics.js",
         "setup-content": "node scripts/setup-wordpress-content.js",
         "test-auto": "node scripts/test-auto-selection.js",
-        "test-webhook": "node scripts/test-webhook.js"
+        "test-webhook": "node scripts/test-webhook.js",
+        "trigger": "curl -X POST http://localhost:3000/trigger",
+        "lint": "echo \"No linter configured\"",
+        "build": "echo \"No build step required\""
     },
     "keywords": [
         "ai",
         "blog",
         "automation",
         "wordpress",
-        "openai"
+        "gemini",
+        "google-ai",
+        "content-generation",
+        "seo",
+        "nodejs",
+        "express",
+        "rest-api",
+        "cron",
+        "scheduling",
+        "free-hosting",
+        "render",
+        "heroku",
+        "content-marketing",
+        "ai-content",
+        "blog-automation",
+        "wordpress-api",
+        "ai-writing",
+        "content-creation",
+        "automated-blogging",
+        "seo-content",
+        "ai-tools"
     ],
-    "author": "Your Name",
+    "author": {
+        "name": "Your Name",
+        "email": "your.email@example.com",
+        "url": "https://github.com/yourusername"
+    },
     "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/yourusername/ai-blog-automation.git"
+    },
+    "bugs": {
+        "url": "https://github.com/yourusername/ai-blog-automation/issues"
+    },
+    "homepage": "https://github.com/yourusername/ai-blog-automation#readme",
+    "engines": {
+        "node": ">=18.0.0",
+        "npm": ">=8.0.0"
+    },
     "dependencies": {
         "axios": "^1.6.0",
         "dotenv": "^16.3.1",
@@ -41,7 +80,20 @@
     "devDependencies": {
         "nodemon": "^3.0.1"
     },
-    "engines": {
-        "node": ">=16.0.0"
+    "os": [
+        "linux",
+        "darwin",
+        "win32"
+    ],
+    "cpu": [
+        "x64",
+        "arm64"
+    ],
+    "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/yourusername"
+    },
+    "publishConfig": {
+        "access": "public"
     }
 }
