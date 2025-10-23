@@ -15,14 +15,14 @@ async function listModels() {
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
     console.log("Available models:");
-    console.log("1. gemini-1.5-pro (Recommended)");
-    console.log("2. gemini-1.5-flash");
+    console.log("1. gemini-2.5-flash (Recommended)");
+    console.log("2. gemini-2.5-flash");
     console.log("3. gemini-pro");
     console.log("4. gemini-pro-vision");
     console.log();
 
     // Test different models
-    const modelsToTest = ["gemini-1.5-pro", "gemini-1.5-flash", "gemini-pro"];
+    const modelsToTest = ["gemini-2.5-flash", "gemini-2.5-flash", "gemini-pro"];
 
     for (const modelName of modelsToTest) {
       try {
@@ -38,9 +38,9 @@ async function listModels() {
         console.log(`   Response: ${response.text()}\n`);
 
         // If this model works, suggest using it
-        if (modelName === "gemini-1.5-pro") {
+        if (modelName === "gemini-2.5-flash") {
           console.log(
-            "💡 Using gemini-1.5-pro (latest and most capable model)"
+            "💡 Using gemini-2.5-flash (latest and most capable model)"
           );
         }
       } catch (error) {

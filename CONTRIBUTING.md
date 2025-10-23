@@ -183,7 +183,7 @@ Add any other context or screenshots about the feature request here.
  */
 async function generateBlogContent(topic) {
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
     const result = await model.generateContent(topic);
     return result.response.text();
   } catch (error) {

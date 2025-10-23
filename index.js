@@ -81,10 +81,13 @@ app.get("/keep-alive", (req, res) => {
 // Initialize Gemini AI
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
-// Generate blog content using Gemini AI
-async function generateBlog() {
-  const topics = [
-    // Industry Applications
+// Topic tracking for diversity
+let usedTopics = [];
+let topicRotationIndex = 0;
+
+// Enhanced topic selection with categories and diversity
+const topicCategories = {
+  "Industry Applications": [
     "latest AI trends and developments",
     "machine learning applications in business",
     "artificial intelligence in healthcare",
@@ -95,8 +98,8 @@ async function generateBlog() {
     "AI in energy and utilities",
     "AI in real estate and property management",
     "AI in legal services and compliance",
-
-    // Technology Focus
+  ],
+  "Technology Focus": [
     "deep learning breakthroughs",
     "natural language processing advances",
     "computer vision innovations",
@@ -107,8 +110,8 @@ async function generateBlog() {
     "AI in cloud computing and infrastructure",
     "federated learning and privacy-preserving AI",
     "AI-powered robotics and automation",
-
-    // Social Impact
+  ],
+  "Social Impact": [
     "the impact of AI on job markets",
     "AI ethics and responsible development",
     "AI in education and learning",
@@ -119,8 +122,8 @@ async function generateBlog() {
     "AI in mental health and wellness",
     "AI for environmental conservation",
     "AI in disaster response and emergency management",
-
-    // Case Studies & Problem Solutions
+  ],
+  "Case Studies": [
     "how Netflix uses AI for content recommendation",
     "how Amazon optimizes logistics with AI",
     "how Tesla's autonomous driving technology works",
@@ -131,8 +134,8 @@ async function generateBlog() {
     "how Airbnb uses AI for dynamic pricing",
     "how LinkedIn matches jobs with candidates using AI",
     "how Instagram's algorithm curates your feed",
-
-    // Problem-Solving Scenarios
+  ],
+  "Problem Solutions": [
     "solving customer churn with AI predictive analytics",
     "reducing fraud in financial transactions with AI",
     "optimizing supply chain management with machine learning",
@@ -143,8 +146,8 @@ async function generateBlog() {
     "detecting and preventing cyber attacks with AI",
     "optimizing energy consumption with smart AI systems",
     "improving healthcare outcomes with predictive medicine",
-
-    // Emerging Trends
+  ],
+  "Emerging Trends": [
     "the future of AI in transportation",
     "AI-powered personal assistants and productivity",
     "AI in creative industries and content creation",
@@ -155,8 +158,8 @@ async function generateBlog() {
     "AI-powered smart cities and urban planning",
     "AI in biotechnology and drug discovery",
     "the future of human-AI collaboration",
-
-    // Implementation Guides
+  ],
+  "Implementation Guides": [
     "implementing AI in small businesses",
     "building an AI strategy for enterprises",
     "measuring ROI of AI investments",
@@ -167,11 +170,111 @@ async function generateBlog() {
     "managing AI project risks and compliance",
     "scaling AI solutions from pilot to production",
     "creating a data-driven culture with AI",
-  ];
+  ],
+  "Advanced Technologies": [
+    "AI-powered autonomous vehicles and smart transportation",
+    "machine learning in drug discovery and pharmaceutical research",
+    "AI applications in space exploration and satellite technology",
+    "quantum machine learning and its potential applications",
+    "AI in renewable energy optimization and smart grids",
+    "computer vision in medical imaging and diagnostics",
+    "natural language processing in legal document analysis",
+    "AI-powered predictive maintenance in industrial equipment",
+    "machine learning for climate modeling and weather prediction",
+    "AI in precision agriculture and crop optimization",
+  ],
+  "Business Applications": [
+    "AI-driven customer segmentation and targeting strategies",
+    "machine learning for inventory optimization and demand forecasting",
+    "AI-powered pricing strategies and dynamic pricing models",
+    "automated financial reporting and compliance monitoring",
+    "AI in talent acquisition and employee retention",
+    "machine learning for market research and competitive analysis",
+    "AI-powered supply chain risk assessment and mitigation",
+    "automated customer feedback analysis and sentiment tracking",
+    "AI in product development and innovation management",
+    "machine learning for business process optimization",
+  ],
+  "Emerging Applications": [
+    "AI in virtual and augmented reality experiences",
+    "machine learning for personalized learning and education",
+    "AI-powered smart home automation and IoT integration",
+    "computer vision in sports analytics and performance optimization",
+    "AI in music composition and creative content generation",
+    "machine learning for social media content moderation",
+    "AI-powered language translation and cross-cultural communication",
+    "computer vision in wildlife conservation and monitoring",
+    "AI in urban planning and smart city development",
+    "machine learning for personalized healthcare and wellness",
+  ],
+};
 
-  const randomTopic = topics[Math.floor(Math.random() * topics.length)];
+// Smart topic selection function
+function selectDiverseTopic() {
+  const categoryNames = Object.keys(topicCategories);
+  
+  // Reset used topics if we've used all topics
+  if (usedTopics.length >= 100) {
+    console.log("🔄 Resetting topic rotation - all topics have been used");
+    usedTopics = [];
+    topicRotationIndex = 0;
+  }
+  
+  // Try to select from different categories
+  let attempts = 0;
+  let selectedTopic = null;
+  
+  while (attempts < 10 && !selectedTopic) {
+    // Rotate through categories to ensure diversity
+    const categoryIndex = topicRotationIndex % categoryNames.length;
+    const currentCategory = categoryNames[categoryIndex];
+    const categoryTopics = topicCategories[currentCategory];
+    
+    // Find unused topics in this category
+    const availableTopics = categoryTopics.filter(topic => !usedTopics.includes(topic));
+    
+    if (availableTopics.length > 0) {
+      // Select randomly from available topics in this category
+      selectedTopic = availableTopics[Math.floor(Math.random() * availableTopics.length)];
+      console.log(`📝 Selected topic from ${currentCategory}: "${selectedTopic}"`);
+    } else {
+      // If no topics available in this category, move to next category
+      topicRotationIndex++;
+    }
+    
+    attempts++;
+  }
+  
+  // Fallback: if no topic found through rotation, select any unused topic
+  if (!selectedTopic) {
+    const allTopics = Object.values(topicCategories).flat();
+    const availableTopics = allTopics.filter(topic => !usedTopics.includes(topic));
+    
+    if (availableTopics.length > 0) {
+      selectedTopic = availableTopics[Math.floor(Math.random() * availableTopics.length)];
+      console.log(`📝 Fallback selection: "${selectedTopic}"`);
+    } else {
+      // Last resort: select any topic
+      selectedTopic = allTopics[Math.floor(Math.random() * allTopics.length)];
+      console.log(`📝 Last resort selection: "${selectedTopic}"`);
+    }
+  }
+  
+  // Mark topic as used and move to next category
+  usedTopics.push(selectedTopic);
+  topicRotationIndex++;
+  
+  console.log(`📊 Used topics: ${usedTopics.length}/100`);
+  console.log(`🔄 Next category rotation: ${topicRotationIndex % categoryNames.length}`);
+  
+  return selectedTopic;
+}
 
-  const prompt = `Write a comprehensive, engaging blog post about ${randomTopic}. 
+// Generate blog content using Gemini AI
+async function generateBlog() {
+  const selectedTopic = selectDiverseTopic();
+
+  const prompt = `Write a comprehensive, engaging blog post about ${selectedTopic}. 
   The post should be between 800-1200 words, well-structured with clear headings, 
   include practical examples, real-world applications, case studies, and actionable insights. 
   If the topic is a case study, include specific details about the company, their challenges, AI solution implemented, and results achieved. 
@@ -183,7 +286,7 @@ async function generateBlog() {
   Include specific metrics, statistics, or data points where relevant to support your points.`;
 
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
     const result = await model.generateContent([
       "You are an expert tech blogger specializing in AI and technology trends. Write engaging, informative content that provides value to readers. Return ONLY the blog content with HTML formatting, no DOCTYPE, no html/head/body tags.",
@@ -212,7 +315,7 @@ async function generateBlog() {
 async function autoSelectCategoryAndTags(content, title) {
   try {
     const categoryModel = genAI.getGenerativeModel({
-      model: "gemini-1.5-flash",
+      model: "gemini-2.5-flash",
     });
 
     // Category mapping
@@ -445,7 +548,7 @@ async function autoSelectCategoryAndTags(content, title) {
 async function postToWordPress(content) {
   try {
     // Generate a title from the content using Gemini
-    const titleModel = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const titleModel = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
     const titleResult = await titleModel.generateContent([
       "You are a professional blog title generator. Generate ONE catchy, SEO-friendly title (max 60 characters) for a blog post about AI and technology. Return ONLY the title, no explanations, no multiple options, no asterisks or formatting.",
