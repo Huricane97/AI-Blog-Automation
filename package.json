@@ -81,7 +81,7 @@
     },
     "devDependencies": {
         "nodemon": "^3.1.11",
-        "eslint": "^8.55.0",
+        "eslint": "^10.1.0",
         "jest": "^30.2.0"
     },
     "os": [
